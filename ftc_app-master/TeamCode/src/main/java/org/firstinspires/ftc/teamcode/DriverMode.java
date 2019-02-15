@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-public class Driver_mode extends LinearOpMode {
+public class DriverMode extends LinearOpMode {
 
     private DcMotor mers_left = null;
     private DcMotor mers_right = null;
