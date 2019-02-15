@@ -36,7 +36,7 @@ public class DriverMode extends LinearOpMode {
         glisiera = hardwareMap.dcMotor.get("glisiera");
 
         mers_right.setDirection(DcMotorSimple.Direction.FORWARD);
-        mers_left.setDirection(DcMotorSimple.Direction.FORWARD);
+        mers_left.setDirection(DcMotorSimple.Direction.REVERSE);
         extindere_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         rotire_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         cutie_perii.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -59,7 +59,34 @@ public class DriverMode extends LinearOpMode {
     }
 
     protected void Gamepad1() {
-        
+        // Joystick left
+        if(gamepad1.left_stick_y > deadzone){
+            mers_left.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
+            mers_right.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
+        }
+        else if(gamepad1.left_stick_y < -deadzone) {
+            mers_left.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
+            mers_right.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
+        }
+        else{
+            mers_left.setPower(0);
+            mers_right.setPower(0);
+        }
+
+        // Joystick right
+        if(gamepad1.right_stick_x > deadzone){
+            mers_left.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
+            mers_right.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
+        }
+        else if(gamepad1.right_stick_x < -deadzone){
+            mers_left.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
+            mers_right.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
+        }
+        else
+        {
+            mers_left.setPower(0);
+            mers_right.setPower(0);
+        }
 
 
     }
