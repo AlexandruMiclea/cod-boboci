@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
 
 public class DriverMode extends LinearOpMode {
 
@@ -60,35 +61,13 @@ public class DriverMode extends LinearOpMode {
 
     protected void Gamepad1() {
         // Joystick left
-        if(gamepad1.left_stick_y > deadzone){
-            mers_left.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
-            mers_right.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
-        }
-        else if(gamepad1.left_stick_y < -deadzone) {
-            mers_left.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
-            mers_right.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
-        }
-        else{
-            mers_left.setPower(0);
-            mers_right.setPower(0);
-        }
+        if(Math.abs(gamepad1.left_stick_y) > deadzone) mers_left.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
+        else mers_left.setPower(0);
 
         // Joystick right
-        if(gamepad1.right_stick_x > deadzone){
-            mers_left.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
-            mers_right.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
-        }
-        else if(gamepad1.right_stick_x < -deadzone){
-            mers_left.setPower(gamepad1.left_stick_y < -0.9 ? -0.9 : gamepad1.left_stick_y);
-            mers_right.setPower(gamepad1.left_stick_y > 0.9 ? 0.9 : gamepad1.left_stick_y);
-        }
-        else
-        {
-            mers_left.setPower(0);
-            mers_right.setPower(0);
-        }
-
-
+        if(Math.abs(gamepad1.right_stick_y) > deadzone) mers_right.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
+        else mers_right.setPower(0);
+        
     }
 
     protected void Gamepad2() {
