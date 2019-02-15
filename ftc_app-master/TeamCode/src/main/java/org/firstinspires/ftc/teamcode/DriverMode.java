@@ -67,7 +67,7 @@ public class DriverMode extends LinearOpMode {
         // Joystick right
         if(Math.abs(gamepad1.right_stick_y) > deadzone) mers_right.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
         else mers_right.setPower(0);
-        
+
     }
 
     protected void Gamepad2() {
@@ -83,8 +83,8 @@ public class DriverMode extends LinearOpMode {
         else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
         else glisiera.setPower(0);
 
-        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(0.5);
-        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(-0.5);
+        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
+        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, 0.1));
         else extindere_perii.setPower(0);
 
     }
