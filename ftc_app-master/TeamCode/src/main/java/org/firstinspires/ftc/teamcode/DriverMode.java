@@ -19,6 +19,11 @@ public class DriverMode extends LinearOpMode {
     public void runOpMode() {
         Initialise();
         waitForStart();
+
+        while (opModeIsActive()) {
+            Gamepad1();
+            Gamepad2();
+        }
     }
 
     protected void Initialise() {
@@ -54,6 +59,8 @@ public class DriverMode extends LinearOpMode {
     }
 
     protected void Gamepad1() {
+        
+
 
     }
 
