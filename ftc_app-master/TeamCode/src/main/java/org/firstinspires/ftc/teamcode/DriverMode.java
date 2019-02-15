@@ -13,6 +13,8 @@ public class Driver_mode extends LinearOpMode {
     private DcMotor cutie_perii = null;
     private DcMotor glisiera = null;
 
+    private double deadzone = 0.1;
+
     @Override
     public void runOpMode() {
         Initialise();
@@ -60,8 +62,17 @@ public class Driver_mode extends LinearOpMode {
         else if(gamepad2.y) rotire_perii.setPower(-0.5);
         else rotire_perii.setPower(0);
 
-        if(gamepad2.a)
+        if(gamepad2.a) cutie_perii.setPower(0.5);
+        else if(gamepad2.b) cutie_perii.setPower(-0.5);
+        else cutie_perii.setPower(0);
 
+        if(gamepad2.dpad_up) glisiera.setPower(0.5);
+        else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
+        else glisiera.setPower(0);
+
+        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(0.5);
+        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(-0.5);
+        else extindere_perii.setPower(0);
 
     }
 }
