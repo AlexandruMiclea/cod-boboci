@@ -84,7 +84,7 @@ public class DriverMode extends LinearOpMode {
         else glisiera.setPower(0);
 
         if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
-        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, -0.1));
+        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, - 0.1));
         else extindere_perii.setPower(0);
 
     }
