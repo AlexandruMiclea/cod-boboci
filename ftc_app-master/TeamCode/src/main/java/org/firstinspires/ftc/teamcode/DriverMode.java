@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
 
 public class DriverMode extends LinearOpMode {
 
@@ -59,7 +60,7 @@ public class DriverMode extends LinearOpMode {
     }
 
     protected void Gamepad1() {
-        
+
 
 
     }
@@ -74,11 +75,11 @@ public class DriverMode extends LinearOpMode {
         else cutie_perii.setPower(0);
 
         if(gamepad2.dpad_up) glisiera.setPower(0.5);
-        else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
+        else if(gamepad2.dpad_down)  glisiera.setPower(-0.3);
         else glisiera.setPower(0);
 
-        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(0.5);
-        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(-0.5);
+        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
+        else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, -0.1));
         else extindere_perii.setPower(0);
 
     }
