@@ -37,7 +37,7 @@ public class DriverMode extends LinearOpMode {
         glisiera = hardwareMap.dcMotor.get("glisiera");
 
         mers_right.setDirection(DcMotorSimple.Direction.FORWARD);
-        mers_left.setDirection(DcMotorSimple.Direction.FORWARD);
+        mers_left.setDirection(DcMotorSimple.Direction.REVERSE);
         extindere_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         rotire_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         cutie_perii.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -60,9 +60,14 @@ public class DriverMode extends LinearOpMode {
     }
 
     protected void Gamepad1() {
+        // Joystick left
+        if(Math.abs(gamepad1.left_stick_y) > deadzone) mers_left.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
+        else mers_left.setPower(0);
 
-
-
+        // Joystick right
+        if(Math.abs(gamepad1.right_stick_y) > deadzone) mers_right.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
+        else mers_right.setPower(0);
+        
     }
 
     protected void Gamepad2() {
