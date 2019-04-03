@@ -10,8 +10,10 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class AutonomousMode extends LinearOpMode {
 
     //motoare
-    private DcMotor mers_left = null;
-    private DcMotor mers_right = null;
+    private DcMotor FL = null;
+    private DcMotor FR = null;
+    private DcMotor BL = null;
+    private DcMotor BR = null;
     private DcMotor glisare = null;
     private DcMotor rotire_perii = null;
     private DcMotor ridicare_perii = null;
@@ -42,8 +44,10 @@ public class AutonomousMode extends LinearOpMode {
 
     private void Initialise() {
         //mapare
-        mers_right = hardwareMap.dcMotor.get("mers_right");
-        mers_left = hardwareMap.dcMotor.get("mers_left");
+        FL = hardwareMap.dcMotor.get("Motor Fata Stanga");
+        BL = hardwareMap.dcMotor.get("Motor Spate Stanga");
+        BR = hardwareMap.dcMotor.get("Motor Spate Dreapta");
+        FR = hardwareMap.dcMotor.get("Motor Fata Dreapta");
         glisare = hardwareMap.dcMotor.get("glisare");
         rotire_perii = hardwareMap.dcMotor.get("rotire_perii");
         ridicare_perii = hardwareMap.dcMotor.get("ridicare_perii");
@@ -54,32 +58,40 @@ public class AutonomousMode extends LinearOpMode {
         gyro = (ModernRoboticsI2cGyro) hardwareMap.gyroSensor.get("gyro");
 
         //directie motoare
-        mers_right.setDirection(DcMotorSimple.Direction.FORWARD);
-        mers_left.setDirection(DcMotorSimple.Direction.FORWARD);
+        FL.setDirection(DcMotorSimple.Direction.FORWARD);
+        BL.setDirection(DcMotorSimple.Direction.FORWARD);
+        FR.setDirection(DcMotorSimple.Direction.REVERSE);
+        BR.setDirection(DcMotorSimple.Direction.REVERSE);
         glisare.setDirection(DcMotorSimple.Direction.FORWARD);
         rotire_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         ridicare_perii.setDirection(DcMotorSimple.Direction.FORWARD);
         ridicare_cutie.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //setare mod
-        mers_right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        mers_left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         glisare.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rotire_perii.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         ridicare_perii.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         ridicare_cutie.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //setare motor in tensiune
-        mers_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        mers_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         glisare.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rotire_perii.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         ridicare_perii.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         ridicare_cutie.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //setare putere
-        mers_right.setPower(0);
-        mers_left.setPower(0);
+        FL.setPower(0);
+        FR.setPower(0);
+        BL.setPower(0);
+        BR.setPower(0);
         glisare.setPower(0);
         rotire_perii.setPower(0);
         ridicare_perii.setPower(0);
