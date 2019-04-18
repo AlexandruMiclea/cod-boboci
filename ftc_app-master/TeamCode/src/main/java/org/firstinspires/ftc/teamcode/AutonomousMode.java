@@ -114,7 +114,7 @@ public class AutonomousMode extends LinearOpMode {
 
         if (endPosition>360){
             endPosition -=360;
-        } else if (endPosition<0) {
+        } else if (endPosition  < 0) {
             endPosition += 360;
         }
 
