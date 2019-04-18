@@ -19,31 +19,22 @@ public class DriverMode extends RobotHardware {
 
         while (opModeIsActive()) {
             Gamepad1();
-            Gamepad2();
         }
     }
 
     protected void Gamepad1() {
         // Joystick left
-        if(Math.abs(gamepad1.left_stick_y) > deadzone){
-            FL.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
-            BL.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
-        }
-        else{
+        if(Math.abs(gamepad1.left_stick_x) > deadzone || Math.abs(gamepad1.left_stick_y) > deadzone) {
+            FL.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
+            FR.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
+            BL.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
+            BR.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
+        } else {
             FL.setPower(0);
             BL.setPower(0);
-        }
-
-        // Joystick right
-        if(Math.abs(gamepad1.right_stick_y) > deadzone){
-            FR.setPower(Range.clip(gamepad1.right_stick_x, -0.9, 0.9));
-            BR.setPower(Range.clip(gamepad1.right_stick_x, -0.9, 0.9));
-        }
-        else{
             FR.setPower(0);
             BR.setPower(0);
         }
-
     }
 
     /*protected void Gamepad2() {
