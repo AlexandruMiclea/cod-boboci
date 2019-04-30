@@ -18,84 +18,37 @@ public class DriverMode extends RobotHardware {
 
         while (opModeIsActive()) {
             Gamepad1();
-            //                  Gamepad2();
+            //Gamepad2();
         }
     }
 
-    protected void Initialise() {
-
-        FL = hardwareMap.dcMotor.get("Motor Fata Stanga");
-        BL = hardwareMap.dcMotor.get("Motor Spate Stanga");
-        BR = hardwareMap.dcMotor.get("Motor Spate Dreapta");
-        FR = hardwareMap.dcMotor.get("Motor Fata Dreapta");
-     /*   extindere_perii = hardwareMap.dcMotor.get("glisare");
-        rotire_perii = hardwareMap.dcMotor.get("rotire_perii");
-        cutie_perii = hardwareMap.dcMotor.get("ridicare_perii");
-        glisiera = hardwareMap.dcMotor.get("ridicare_cutie");*/
-
-        FL.setDirection(DcMotorSimple.Direction.FORWARD);
-        BL.setDirection(DcMotorSimple.Direction.FORWARD);
-        FR.setDirection(DcMotorSimple.Direction.REVERSE);
-        BR.setDirection(DcMotorSimple.Direction.REVERSE);
-/*        extindere_perii.setDirection(DcMotorSimple.Direction.FORWARD);
-        rotire_perii.setDirection(DcMotorSimple.Direction.FORWARD);
-        cutie_perii.setDirection(DcMotorSimple.Direction.FORWARD);
-        glisiera.setDirection(DcMotorSimple.Direction.FORWARD);*/
-
-        FL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        BL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        FR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        BR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-   /*     extindere_perii.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rotire_perii.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        cutie_perii.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        glisiera.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);*/
-
-        FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-/*
-        extindere_perii.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rotire_perii.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        cutie_perii.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        glisiera.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-*/
-
-        FL.setPower(0);
-        FR.setPower(0);
-        BL.setPower(0);
-        BR.setPower(0);
-/*        extindere_perii.setPower(0);
-        rotire_perii.setPower(0);
-        cutie_perii.setPower(0);
-        glisiera.setPower(0);*/
-
-    }
-
-
-
-
-
     protected void Gamepad1() {
         // Joystick left
-        if(Math.abs(gamepad1.left_stick_x) > deadzone || Math.abs(gamepad1.left_stick_y) > deadzone) {
+        if (Math.abs(gamepad1.left_stick_x) > deadzone || Math.abs(gamepad1.left_stick_y) > deadzone) {
             FL.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
             FR.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
             BL.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
             BR.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
         } else {
-            FL.setPower(0);
-            BL.setPower(0);
-            FR.setPower(0);
-            BR.setPower(0);
+            StopMotors();
+        }
+
+        // Joystick right
+        if (Math.abs(gamepad1.right_stick_x) > deadzone) {
+            FL.setPower(Range.clip(gamepad1.right_stick_x, -0.7, 0.7));
+            FR.setPower(Range.clip(-gamepad1.right_stick_x, -0.7, 0.7));
+            BL.setPower(Range.clip(gamepad1.right_stick_x, -0.7, 0.7));
+            BR.setPower(Range.clip(-gamepad1.right_stick_x, -0.7, 0.7));
+        } else {
+            StopMotors();
         }
     }
 
+      
 /*    protected void Gamepad2() {
-=======
+
     /*protected void Gamepad2() {
->>>>>>> b4c17e8ad75c9139243757245e9a945c9749e825
+
         if(gamepad2.x) rotire_perii.setPower(0.5);
         else if(gamepad2.y) rotire_perii.setPower(-0.5);
         else rotire_perii.setPower(0);
@@ -106,9 +59,8 @@ public class DriverMode extends RobotHardware {
         
         *//*if(gamepad2.dpad_up) glisiera.setPower(0.5);
         else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
-<<<<<<< HEAD
+
         else glisiera.setPower(0);*//*
-=======
         else glisiera.setPower(0);*/
 
         /*if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
