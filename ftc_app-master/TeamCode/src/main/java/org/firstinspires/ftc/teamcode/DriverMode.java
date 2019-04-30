@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -8,16 +7,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name = "DriverMode", group = "Driver")
 
-public class DriverMode extends LinearOpMode {
-
-    private DcMotor FL = null;
-    private DcMotor FR = null;
-    private DcMotor BL = null;
-    private DcMotor BR = null;
-    private DcMotor extindere_perii = null;
-    private DcMotor rotire_perii = null;
-    private DcMotor cutie_perii = null;
-    private DcMotor glisiera = null;
+public class DriverMode extends RobotHardware {
 
     private double deadzone = 0.1;
 
@@ -28,7 +18,7 @@ public class DriverMode extends LinearOpMode {
 
         while (opModeIsActive()) {
             Gamepad1();
-            //Gamepad2();
+            //                  Gamepad2();
         }
     }
 
@@ -83,30 +73,29 @@ public class DriverMode extends LinearOpMode {
 
     }
 
+
+
+
+
     protected void Gamepad1() {
         // Joystick left
-        if(Math.abs(gamepad1.left_stick_y) > deadzone){
-            FL.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
-            BL.setPower(Range.clip(gamepad1.left_stick_x, -0.9, 0.9));
-        }
-        else{
+        if(Math.abs(gamepad1.left_stick_x) > deadzone || Math.abs(gamepad1.left_stick_y) > deadzone) {
+            FL.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
+            FR.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
+            BL.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
+            BR.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
+        } else {
             FL.setPower(0);
             BL.setPower(0);
-        }
-
-        // Joystick right
-        if(Math.abs(gamepad1.right_stick_y) > deadzone){
-            FR.setPower(Range.clip(gamepad1.right_stick_x, -0.9, 0.9));
-            BR.setPower(Range.clip(gamepad1.right_stick_x, -0.9, 0.9));
-        }
-        else{
             FR.setPower(0);
             BR.setPower(0);
         }
-
     }
 
 /*    protected void Gamepad2() {
+=======
+    /*protected void Gamepad2() {
+>>>>>>> b4c17e8ad75c9139243757245e9a945c9749e825
         if(gamepad2.x) rotire_perii.setPower(0.5);
         else if(gamepad2.y) rotire_perii.setPower(-0.5);
         else rotire_perii.setPower(0);
@@ -117,9 +106,12 @@ public class DriverMode extends LinearOpMode {
         
         *//*if(gamepad2.dpad_up) glisiera.setPower(0.5);
         else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
+<<<<<<< HEAD
         else glisiera.setPower(0);*//*
+=======
+        else glisiera.setPower(0);*/
 
-        if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
+        /*if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
         else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, -0.1));
 
         if(gamepad2.dpad_up) glisiera.setPower(0.5);
@@ -128,7 +120,6 @@ public class DriverMode extends LinearOpMode {
 
         if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
         else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, - 0.1));
-        else extindere_perii.setPower(0);
+        else extindere_perii.setPower(0);*/
 
-    }*/
-}
+    }
