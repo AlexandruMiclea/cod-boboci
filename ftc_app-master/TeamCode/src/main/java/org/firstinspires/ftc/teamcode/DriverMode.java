@@ -25,10 +25,10 @@ public class DriverMode extends RobotHardware {
     protected void Gamepad1() {
         // Joystick left
         if(Math.abs(gamepad1.left_stick_x) > deadzone || Math.abs(gamepad1.left_stick_y) > deadzone) {
-            FL.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
-            FR.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
-            BL.setPower(Range.clip(gamepad1.left_stick_x + gamepad1.left_stick_y, -0.7, 0.7));
-            BR.setPower(Range.clip(gamepad1.left_stick_x - gamepad1.left_stick_y, -0.7, 0.7));
+            FL.setPower(Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -0.7, 0.7));
+            FR.setPower(Range.clip(gamepad1.left_stick_y + gamepad1.left_stick_x, -0.7, 0.7));
+            BL.setPower(Range.clip(gamepad1.left_stick_y + gamepad1.left_stick_x, -0.7, 0.7));
+            BR.setPower(Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -0.7, 0.7));
         } else {
             FL.setPower(0);
             BL.setPower(0);
@@ -48,7 +48,7 @@ public class DriverMode extends RobotHardware {
         
         /*if(gamepad2.dpad_up) glisiera.setPower(0.5);
         else if(gamepad2.dpad_down)  glisiera.setPower(-0.5);
-        else glisiera.setPower(0);*/*/
+        else glisiera.setPower(0);*/
 
         /*if(gamepad2.left_stick_y > deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, 0.1, 0.7));
         else if(gamepad2.left_stick_y < -deadzone) extindere_perii.setPower(Range.clip(gamepad2.left_stick_y, -0.5, -0.1));
@@ -62,4 +62,3 @@ public class DriverMode extends RobotHardware {
         else extindere_perii.setPower(0);*/
 
     }
-}

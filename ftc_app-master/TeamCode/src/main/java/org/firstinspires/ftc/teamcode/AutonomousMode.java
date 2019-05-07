@@ -13,19 +13,56 @@ public class AutonomousMode extends RobotHardware {
         Initialise();
         waitForStart();
 
-        gyro.calibrate();
+        /*gyro.calibrate();
         while (gyro.isCalibrating()) {
             idle();
-        }
+        }*/
 
         while (opModeIsActive()) {
-            // TEST
+            /*// TEST
             Rotire(90);
-            Rotire(-90);
+            Rotire(-90);*/
+            Strafe(1,1);
+            Strafe(2,1);
+            Strafe(3,1);
+            Strafe(4,1);
         }
     }
 
-    private void Rotire(int unghi) {
+    private void Strafe(int directie, int durata){
+        if (directie == 1){
+            FL.setPower(0.7);
+            FR.setPower(0.7);
+            BL.setPower(0.7);
+            BR.setPower(0.7);
+            sleep(durata * 1000);
+        }else if (directie == 2){
+            FL.setPower(-0.7);
+            FR.setPower(-0.7);
+            BL.setPower(-0.7);
+            BR.setPower(-0.7);
+            sleep(durata * 1000);
+        }else if (directie == 3) {
+            FL.setPower(-0.7);
+            FR.setPower(0.7);
+            BL.setPower(0.7);
+            BR.setPower(-0.7);
+            sleep(durata * 1000);
+        }else if (directie == 4){
+            FL.setPower(0.7);
+            FR.setPower(-0.7);
+            BL.setPower(-0.7);
+            BR.setPower(0.7);
+            sleep(durata * 1000);
+        } else {
+            FL.setPower(0);
+            FR.setPower(0);
+            BL.setPower(0);
+            BR.setPower(0);
+        }
+    }
+
+    /*private void Rotire(int unghi) {
         int currentPosition = gyro.getHeading();
         int endPosition = currentPosition + unghi;
 
@@ -54,7 +91,7 @@ public class AutonomousMode extends RobotHardware {
             }
         }
          StopMotors();
-    }
+    }*/
 
     private void StopMotors () {
         FL.setPower(0);
