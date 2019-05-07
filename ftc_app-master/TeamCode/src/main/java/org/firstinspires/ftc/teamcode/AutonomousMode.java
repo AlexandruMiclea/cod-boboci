@@ -71,7 +71,7 @@ public class AutonomousMode extends RobotHardware {
 
         if (endPosition>360){
             endPosition -=360;
-        } else if (endPosition<0) {
+        } else if (endPosition  < 0) {
             endPosition += 360;
         }
 
@@ -93,11 +93,5 @@ public class AutonomousMode extends RobotHardware {
          StopMotors();
     }*/
 
-    private void StopMotors () {
-        FL.setPower(0);
-        FR.setPower(0);
-        BL.setPower(0);
-        BR.setPower(0);
-    }
 
 }
