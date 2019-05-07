@@ -19,8 +19,8 @@ public class AutonomousMode extends RobotHardware {
         }*/
 
         while (opModeIsActive()) {
-            /*// TEST
-            Rotire(90);
+            // TEST
+            /*Rotire(90);
             Rotire(-90);*/
             Strafe(1,1);
             Strafe(2,1);
@@ -54,15 +54,16 @@ public class AutonomousMode extends RobotHardware {
             BL.setPower(-0.7);
             BR.setPower(0.7);
             sleep(durata * 1000);
-        } else {
-            FL.setPower(0);
-            FR.setPower(0);
-            BL.setPower(0);
-            BR.setPower(0);
         }
+
+        FL.setPower(0);
+        FR.setPower(0);
+        BL.setPower(0);
+        BR.setPower(0);
+
     }
 
-    /*private void Rotire(int unghi) {
+    private void Rotire(int unghi) {
         int currentPosition = gyro.getHeading();
         int endPosition = currentPosition + unghi;
 
@@ -91,7 +92,7 @@ public class AutonomousMode extends RobotHardware {
             }
         }
          StopMotors();
-    }*/
+    }
 
 
 }
