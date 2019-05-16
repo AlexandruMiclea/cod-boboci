@@ -18,7 +18,7 @@ public class DriverTest extends RobotHardware {
                 BL.setPower(0.7);
                 BR.setPower(0.7);
             } else {
-                FR.setPower(0.);
+                FR.setPower(0);
                 FL.setPower(0);
                 BL.setPower(0);
                 BR.setPower(0);
