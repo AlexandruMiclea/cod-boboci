@@ -44,7 +44,7 @@ public class DriverMode extends RobotHardware {
         }
     }
 
-      
+
 /*    protected void Gamepad2() {
 
     /*protected void Gamepad2() {
