@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.Path;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 
 @Autonomous(name = "AutonomousMode", group = "Autonomous")
 
 public class AutonomousMode extends RobotHardware {
+
 
     @Override
     public void runOpMode() {
@@ -77,10 +77,7 @@ public class AutonomousMode extends RobotHardware {
             sleep(durata * 1000);
         }
 
-        FL.setPower(0);
-        FR.setPower(0);
-        BL.setPower(0);
-        BR.setPower(0);
+       StopMotors();
 
     }
 
