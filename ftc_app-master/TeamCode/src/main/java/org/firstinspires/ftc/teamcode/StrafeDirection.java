@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-enum StrafeDirection {
+ public enum StrafeDirection {
     FORWARD,
     BACKWARD,
     LEFT,
