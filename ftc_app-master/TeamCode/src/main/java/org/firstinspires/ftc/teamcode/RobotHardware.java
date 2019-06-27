@@ -30,10 +30,10 @@ public abstract class RobotHardware extends LinearOpMode {
         BR.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //setare mod
-        FL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        BL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        FR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        BR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //setare motor in tensiune
         FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

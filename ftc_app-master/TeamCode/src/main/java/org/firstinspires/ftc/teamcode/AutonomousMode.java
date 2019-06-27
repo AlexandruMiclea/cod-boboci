@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 public class AutonomousMode extends RobotHardware {
 
+    const int TICS_PER_CM = 67;
 
     @Override
     public void runOpMode() {
@@ -20,7 +21,6 @@ public class AutonomousMode extends RobotHardware {
 
         while (opModeIsActive()) {
             // TEST
-            // TODO testeaza diagonalele
             /*Rotire(90);
             Rotire(-90);*/
             Strafe(StrafeDirection.FORWARD, 1, 0.5);
@@ -78,9 +78,7 @@ public class AutonomousMode extends RobotHardware {
             BR.setPower(-speed);
             sleep(durata * 1000);
         }
-
        StopMotors();
-
     }
 
     /*private void Rotire(int unghi) {
