@@ -35,47 +35,44 @@ public class AutonomousMode extends RobotHardware {
         }
     }
 
+    protected void StopMotors() {
+        FL.setPower(0);
+        FR.setPower(0);
+        BL.setPower(0);
+        BR.setPower(0);
+    }
+
+    protected void SetMotorsPower(double fl, double fr, double bl, double br) {
+        FL.setPower(fl);
+        FR.setPower(fr);
+        BL.setPower(bl);
+        BR.setPower(br);
+    }
 
     private void Strafe(StrafeDirection Direction, int durata, double speed){
         if (Direction == StrafeDirection.BACKWARD){
-            FL.setPower(speed);
-            FR.setPower(speed);
-            BL.setPower(speed);
-            BR.setPower(speed);
+            SetMotorsPower(speed, speed, speed, speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.FORWARD){
-            FL.setPower(-speed);
-            FR.setPower(-speed);
-            BL.setPower(-speed);
-            BR.setPower(-speed);
+            SetMotorsPower(-speed, -speed, -speed, -speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.RIGHT) {
-            FL.setPower(-speed);
-            FR.setPower(speed);
-            BL.setPower(speed);
-            BR.setPower(-speed);
+            SetMotorsPower(-speed, speed, speed, -speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.LEFT){
-            FL.setPower(speed);
-            FR.setPower(-speed);
-            BL.setPower(-speed);
-            BR.setPower(speed);
+            SetMotorsPower(speed, -speed, -speed, speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.BACKWARDLEFT) {
-            FL.setPower(speed);
-            BR.setPower(speed);
+            SetMotorsPower(speed, 0, 0, speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.BACKWARDRIGHT) {
-            FR.setPower(speed);
-            BL.setPower(speed);
+            SetMotorsPower(0, speed, speed, 0);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.FORWARDLEFT){
-            FR.setPower(-speed);
-            BL.setPower(-speed);
+            SetMotorsPower(-speed, 0, 0, -speed);
             sleep(durata * 1000);
         }else if (Direction == StrafeDirection.FORWARDRIGHT) {
-            FL.setPower(-speed);
-            BR.setPower(-speed);
+            SetMotorsPower(0, -speed, -speed, 0);
             sleep(durata * 1000);
         }
        StopMotors();
