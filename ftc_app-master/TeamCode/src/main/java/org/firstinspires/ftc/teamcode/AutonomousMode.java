@@ -104,13 +104,7 @@ public class AutonomousMode extends RobotHardware {
                 FR.setPower(fata);
                 BL.setPower(fata);
             }
-        } else {
-            while (gyro.getHeading() != endPosition){
-                FL.setPower(fata);
-                BR.setPower(fata);
-                FR.setPower(spate);
-                BL.setPower(spate);
-            }
+
         }
          StopMotors();
     }*/
